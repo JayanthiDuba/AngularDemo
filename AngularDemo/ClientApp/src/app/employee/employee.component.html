@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Employee</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>pkEmpId</td>
+        <td>EmpName</td>
+        <td>EmpSalary</td>
+        <td>EmailId</td>
+        <td>password</td>
+        <td>fkRelation</td>
+        <td>Actions</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ob of Employee">
+        <td>{{ob.pkEmpId}}</td>
+        <td>{{ob.empName}}</td>
+        <td>{{ob.empSalary}}</td>
+        <td>{{ob.emailId}}</td>
+        <td>{{ob.password}}</td>
+        <td>{{ob.fkRelation}}</td>
+        <td>
+          <i class="fa fa-pencil-square-o" title="edit" [routerLink]="['/edit-employee',ob.pkEmpId]" aria-hidden="true"></i>
+          <i class="fa fa-trash" aria-hidden="true" (click)="deleteEmployee(ob.pkEmpId)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p-paginator (onPageChange)="getemployeedetails()" [first]="1" [rows]="1" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+</div>
